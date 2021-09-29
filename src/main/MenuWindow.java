@@ -368,53 +368,62 @@ public class MenuWindow extends JLayeredPane {
     }
 
     private void stampaQuantita() {
-        JLabel quantAB = new JLabel(String.valueOf(ponti[0][1]),SwingConstants.CENTER);
-        quantAB.setBounds(325,170,30,30);
-        quantAB.setFont(quantAB.getFont ().deriveFont (18.0f));
-        quantAB.setBackground(Color.darkGray);
-        quantAB.setForeground(Color.white);
-        quantAB.setOpaque(true);
-        this.add(quantAB);
+        repaint();
 
-        JLabel quantCD = new JLabel(String.valueOf(ponti[2][3]),SwingConstants.CENTER);
-        quantCD.setBounds(280,210,30,30);
-        quantCD.setFont(quantCD.getFont ().deriveFont (18.0f));
-        quantCD.setBackground(Color.darkGray);
-        quantCD.setForeground(Color.white);
-        quantCD.setOpaque(true);
-        this.add(quantCD);
-
-        JLabel quantCA = new JLabel(String.valueOf(ponti[2][0]),SwingConstants.CENTER);
-        quantCA.setBounds(275,160,30,30);
-        quantCA.setFont(quantCA.getFont ().deriveFont (18.0f));
-        quantCA.setBackground(Color.darkGray);
-        quantCA.setForeground(Color.white);
-        quantCA.setOpaque(true);
-        this.add(quantCA);
-
-        JLabel quantAD = new JLabel(String.valueOf(ponti[0][3]),SwingConstants.CENTER);
-        quantAD.setBounds(375,160,30,30);
-        quantAD.setFont(quantAD.getFont ().deriveFont (18.0f));
-        quantAD.setBackground(Color.darkGray);
-        quantAD.setForeground(Color.white);
-        quantAD.setOpaque(true);
-        this.add(quantAD);
-
-        JLabel quantCB = new JLabel(String.valueOf(ponti[2][1]),SwingConstants.CENTER);
-        quantCB.setBounds(275,260,30,30);
-        quantCB.setFont(quantCB.getFont ().deriveFont (18.0f));
-        quantCB.setBackground(Color.darkGray);
-        quantCB.setForeground(Color.white);
-        quantCB.setOpaque(true);
-        this.add(quantCB);
-
-        JLabel quantDB = new JLabel(String.valueOf(ponti[3][1]),SwingConstants.CENTER);
-        quantDB.setBounds(375,260,30,30);
-        quantDB.setFont(quantDB.getFont ().deriveFont (18.0f));
-        quantDB.setBackground(Color.darkGray);
-        quantDB.setForeground(Color.white);
-        quantDB.setOpaque(true);
-        this.add(quantDB);
+        if(ponti[0][1]>3) {
+            JLabel quantAB = new JLabel(String.valueOf(ponti[0][1]),SwingConstants.CENTER);
+            quantAB.setBounds(325,170,30,30);
+            quantAB.setFont(quantAB.getFont ().deriveFont (18.0f));
+            quantAB.setBackground(Color.darkGray);
+            quantAB.setForeground(Color.white);
+            quantAB.setOpaque(true);
+            this.add(quantAB);
+        }
+        if(ponti[2][3]>3) {
+            JLabel quantCD = new JLabel(String.valueOf(ponti[2][3]),SwingConstants.CENTER);
+            quantCD.setBounds(280,210,30,30);
+            quantCD.setFont(quantCD.getFont ().deriveFont (18.0f));
+            quantCD.setBackground(Color.darkGray);
+            quantCD.setForeground(Color.white);
+            quantCD.setOpaque(true);
+            this.add(quantCD);
+        }
+        if(ponti[2][0]>3) {
+            JLabel quantCA = new JLabel(String.valueOf(ponti[2][0]),SwingConstants.CENTER);
+            quantCA.setBounds(275,160,30,30);
+            quantCA.setFont(quantCA.getFont ().deriveFont (18.0f));
+            quantCA.setBackground(Color.darkGray);
+            quantCA.setForeground(Color.white);
+            quantCA.setOpaque(true);
+            this.add(quantCA);
+        }
+        if(ponti[0][3]>3) {
+            JLabel quantAD = new JLabel(String.valueOf(ponti[0][3]), SwingConstants.CENTER);
+            quantAD.setBounds(375, 160, 30, 30);
+            quantAD.setFont(quantAD.getFont().deriveFont(18.0f));
+            quantAD.setBackground(Color.darkGray);
+            quantAD.setForeground(Color.white);
+            quantAD.setOpaque(true);
+            this.add(quantAD);
+        }
+        if(ponti[2][1]>3) {
+            JLabel quantCB = new JLabel(String.valueOf(ponti[2][1]),SwingConstants.CENTER);
+            quantCB.setBounds(275,260,30,30);
+            quantCB.setFont(quantCB.getFont ().deriveFont (18.0f));
+            quantCB.setBackground(Color.darkGray);
+            quantCB.setForeground(Color.white);
+            quantCB.setOpaque(true);
+            this.add(quantCB);
+        }
+        if(ponti[3][1]>3) {
+            JLabel quantDB = new JLabel(String.valueOf(ponti[3][1]),SwingConstants.CENTER);
+            quantDB.setBounds(375,260,30,30);
+            quantDB.setFont(quantDB.getFont ().deriveFont (18.0f));
+            quantDB.setBackground(Color.darkGray);
+            quantDB.setForeground(Color.white);
+            quantDB.setOpaque(true);
+            this.add(quantDB);
+        }
     }
 
     private void aggiungiRamo() {
@@ -525,6 +534,7 @@ public class MenuWindow extends JLayeredPane {
                 }
 
                 stampaQuantita();
+                repaint();
 
                 frame.dispose();
             }
@@ -575,19 +585,133 @@ public class MenuWindow extends JLayeredPane {
             g2.fillRect(140,40,400,360);
 
             g2.setColor(Color.white);
-            g2.setStroke(new BasicStroke(8));
+            g2.setStroke(new BasicStroke(5));
 
             g2.fillOval(315,100,50,50);
             g2.fillOval(315,300,50,50);
             g2.fillOval(215,200,50,50);
             g2.fillOval(415,200,50,50);
 
-            g2.drawLine(340,125,340,325);
-            g2.drawLine(340,125,440,225);
-            g2.drawLine(340,125,240,225);
-            g2.drawLine(240,225,440,225);
-            g2.drawLine(240,225,340,325);
-            g2.drawLine(440,225,340,325);
+            switch (ponti[0][1]) {
+                case 0:
+                    break;
+                case 1:
+                    g2.drawLine(340,125,340,325);
+                    break;
+                case 2:
+                    g2.drawLine(330,125,330,325);
+                    g2.drawLine(350,125,350,325);
+                    break;
+                case 3:
+                    g2.drawLine(330,125,330,325);
+                    g2.drawLine(340,125,340,325);
+                    g2.drawLine(350,125,350,325);
+                    break;
+                default:
+                    g2.setStroke(new BasicStroke(8));
+                    g2.drawLine(340,125,340,325);
+                    g2.setStroke(new BasicStroke(5));
+            }
+            switch (ponti[0][3]) {
+                case 0:
+                    break;
+                case 1:
+                    g2.drawLine(340,125,440,225);
+                    break;
+                case 2:
+                    g2.drawLine(335,130,435,230);
+                    g2.drawLine(345,120,445,220);
+                    break;
+                case 3:
+                    g2.drawLine(335,130,435,230);
+                    g2.drawLine(340,125,440,225);
+                    g2.drawLine(345,120,445,220);
+                    break;
+                default:
+                    g2.setStroke(new BasicStroke(8));
+                    g2.drawLine(340,125,440,225);
+                    g2.setStroke(new BasicStroke(5));
+            }
+            switch (ponti[0][2]) {
+                case 0:
+                    break;
+                case 1:
+                    g2.drawLine(340,125,240,225);
+                    break;
+                case 2:
+                    g2.drawLine(335,120,235,220);
+                    g2.drawLine(345,130,245,230);
+                    break;
+                case 3:
+                    g2.drawLine(335,120,235,220);
+                    g2.drawLine(340,125,240,225);
+                    g2.drawLine(345,130,245,230);
+                    break;
+                default:
+                    g2.setStroke(new BasicStroke(8));
+                    g2.drawLine(340,125,240,225);
+                    g2.setStroke(new BasicStroke(5));
+            }
+            switch (ponti[2][3]) {
+                case 0:
+                    break;
+                case 1:
+                    g2.drawLine(240,225,440,225);
+                    break;
+                case 2:
+                    g2.drawLine(240,215,440,215);
+                    g2.drawLine(240,235,440,235);
+                    break;
+                case 3:
+                    g2.drawLine(240,215,440,215);
+                    g2.drawLine(240,225,440,225);
+                    g2.drawLine(240,235,440,235);
+                    break;
+                default:
+                    g2.setStroke(new BasicStroke(8));
+                    g2.drawLine(240,225,440,225);
+                    g2.setStroke(new BasicStroke(5));
+            }
+            switch (ponti[2][1]) {
+                case 0:
+                    break;
+                case 1:
+                    g2.drawLine(240,225,340,325);
+                    break;
+                case 2:
+                    g2.drawLine(235,230,335,330);
+                    g2.drawLine(245,220,345,320);
+                    break;
+                case 3:
+                    g2.drawLine(235,230,335,330);
+                    g2.drawLine(240,225,340,325);
+                    g2.drawLine(245,220,345,320);
+                    break;
+                default:
+                    g2.setStroke(new BasicStroke(8));
+                    g2.drawLine(240,225,340,325);
+                    g2.setStroke(new BasicStroke(5));
+            }
+            switch (ponti[3][1]) {
+                case 0:
+                    break;
+                case 1:
+                    g2.drawLine(440,225,340,325);
+                    break;
+                case 2:
+                    g2.drawLine(435,220,335,320);
+                    g2.drawLine(445,230,345,330);
+                    break;
+                case 3:
+                    g2.drawLine(435,220,335,320);
+                    g2.drawLine(440,225,340,325);
+                    g2.drawLine(445,230,345,330);
+                    break;
+                default:
+                    g2.setStroke(new BasicStroke(8));
+                    g2.drawLine(440,225,340,325);
+                    g2.setStroke(new BasicStroke(5));
+            }
         }
     }
 }
