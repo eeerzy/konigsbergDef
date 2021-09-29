@@ -12,16 +12,14 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MenuWindow extends JLayeredPane {
-    private BufferedImage image;
     private final JFrame menuFrame = setJFrame();
     private JFrame frame;
     private ArrayList<int[]> rami = new ArrayList<>();
     private JComboBox<String> u;
     private JComboBox<String> v;
-    private int[][] ponti = new int[4][4];
+    private final int[][] ponti = new int[4][4];
     private boolean esecuzione = false;
     private boolean aggiungiRamoAperto = false;
-    //private JTextArea pontiText;
 
     public MenuWindow() {
         // Initialize background image
@@ -534,6 +532,7 @@ public class MenuWindow extends JLayeredPane {
                 }
                 aggiungiRamoAperto=false;
 
+
                 setupExecutePane();
                 repaint();
 
@@ -571,15 +570,18 @@ public class MenuWindow extends JLayeredPane {
     }
 
     private void setBackgroundImage() {
-        try {
-            image = ImageIO.read(new File("src\\assets\\konigsberg.jpg"));
-        } catch (IOException ex) {
-            System.out.print("Error!");
-        }
+
     }
 
     @Override
     protected void paintComponent(Graphics g) {
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(new File("src\\assets\\konigsberg.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         super.paintComponent(g);
         g.drawImage(image,0,0,800,500,this);
 
