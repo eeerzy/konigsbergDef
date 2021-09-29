@@ -20,6 +20,7 @@ public class MenuWindow extends JLayeredPane {
     private JComboBox<String> v;
     private int[][] ponti = new int[4][4];
     private boolean esecuzione = false;
+    private boolean aggiungiRamoAperto = false;
     //private JTextArea pontiText;
 
     public MenuWindow() {
@@ -233,7 +234,9 @@ public class MenuWindow extends JLayeredPane {
 
         addButton.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                aggiungiRamo();
+                if(!aggiungiRamoAperto){
+                    aggiungiRamo();
+                }
             }
         });
         this.add(addButton,3);
@@ -421,6 +424,8 @@ public class MenuWindow extends JLayeredPane {
     }
 
     private void aggiungiRamo() {
+        aggiungiRamoAperto=true;
+
         frame = new JFrame("Nuovo ramo");
         frame.setLocationRelativeTo(null);
         frame.setSize(200,140);
@@ -449,6 +454,7 @@ public class MenuWindow extends JLayeredPane {
         annullaButton.setBounds(10,100,80,30);
         annullaButton.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
+                aggiungiRamoAperto=false;
                 frame.dispose();
             }
         });
@@ -526,6 +532,7 @@ public class MenuWindow extends JLayeredPane {
                     }
                     ponti = ponti.concat("\n");
                 }
+                aggiungiRamoAperto=false;
 
                 setupExecutePane();
                 repaint();
