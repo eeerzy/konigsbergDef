@@ -255,12 +255,6 @@ public class MenuWindow extends JLayeredPane {
         lettD.setBounds(415,200,50,50);
         this.add(lettD);
 
-        for(int i=0;i<4;i++) {
-            for (int j=0;j<4;j++) {
-                ponti[i][j] = 0;
-            }
-        }
-
         ImageIcon executeImg = new ImageIcon("src/assets/buttons/vai.png");
         JLabel executeButton = new JLabel("",SwingConstants.CENTER);
         executeButton.setIcon(executeImg);
@@ -283,6 +277,8 @@ public class MenuWindow extends JLayeredPane {
                         ponti[i][j] = 0;
                     }
                 }
+
+                setupExecutePane();
             }
         });
         this.add(removeAll,3);
@@ -336,10 +332,6 @@ public class MenuWindow extends JLayeredPane {
 
                 g3.printEulerTour();
 
-                for (Integer integer : g3.percorso) {
-                    System.out.println(integer);
-                }
-
                 if(g3.isEulerianPath()) {
                     isEulerianPathResponse.setText("true");
                 } else {
@@ -373,6 +365,7 @@ public class MenuWindow extends JLayeredPane {
         if(ponti[0][1]>3) {
             System.out.println(ponti[0][1]);
             JLabel quantAB = new JLabel(String.valueOf(ponti[0][1]),SwingConstants.CENTER);
+            quantAB.setText(String.valueOf(ponti[0][1]));
             quantAB.setBounds(325,170,30,30);
             quantAB.setFont(quantAB.getFont ().deriveFont (18.0f));
             quantAB.setBackground(Color.darkGray);
@@ -534,7 +527,7 @@ public class MenuWindow extends JLayeredPane {
                     ponti = ponti.concat("\n");
                 }
 
-                stampaQuantita();
+                setupExecutePane();
                 repaint();
 
                 frame.dispose();
@@ -551,6 +544,11 @@ public class MenuWindow extends JLayeredPane {
     }
 
     private void executeMenu() {
+        for(int i=0;i<4;i++) {
+            for (int j=0;j<4;j++) {
+                ponti[i][j] = 0;
+            }
+        }
         setupExecutePane();
     }
 
