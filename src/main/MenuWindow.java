@@ -371,6 +371,7 @@ public class MenuWindow extends JLayeredPane {
         repaint();
 
         if(ponti[0][1]>3) {
+            System.out.println(ponti[0][1]);
             JLabel quantAB = new JLabel(String.valueOf(ponti[0][1]),SwingConstants.CENTER);
             quantAB.setBounds(325,170,30,30);
             quantAB.setFont(quantAB.getFont ().deriveFont (18.0f));
