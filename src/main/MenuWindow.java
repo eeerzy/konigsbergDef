@@ -346,8 +346,10 @@ public class MenuWindow extends JLayeredPane {
 
                 String percorsoString = "";
 
+                String[] alfabeto = {"A","B","C","D"};
+
                 for (int nodo: g3.percorso) {
-                    percorsoString = percorsoString.concat(String.valueOf(nodo));
+                    percorsoString = percorsoString.concat(alfabeto[nodo]);
                     percorsoString = percorsoString.concat(" - ");
                 }
 
